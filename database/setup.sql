@@ -31,7 +31,7 @@ CREATE TABLE stocks (
     -- total_amount = column name
 -- DECIMAL(10, 2) = decimal data type with up to 10 digits
 -- and 2 digits after the decimal point
-    fees DECIMAL(10, 2) NOT NULL,
+    fees DECIMAL(10, 2) DEFAULT 0.00 NOT NULL,
     -- fees = column name
     notes TEXT,
     -- notes = column name
