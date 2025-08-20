@@ -1,48 +1,60 @@
--- Table for tracking stock buy/sell transactions
+-- TO THE MOON DATABASE SETUP SCRIPT--
 
-CREATE TABLE stocks (
+USE to_the_moon;
+
+-- Table 1: Stocks
+CREATE TABLE IF NOT EXISTS stocks (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    -- id = column name
--- INT = integer data type (whole numbers only)
--- AUTO_INCREMENT = automatically increase value for each new row
--- PRIMARY KEY = tells MySQL this is the unique identifier for each row
--- , = separates columns)
     symbol VARCHAR(10) NOT NULL,
-    -- symbol = column name
--- VARCHAR(10) = variable character data type with a maximum length of 10 characters
--- NOT NULL = this column must have a value (cannot be empty
     company_name VARCHAR(255),
-    -- company_name = column name
--- VARCHAR(255) = variable character data type with a maximum length of 255 characters
     transaction_type ENUM('BUY', 'SELL') NOT NULL,
-    -- transaction_type = column name
--- ENUM('BUY', 'SELL') = enumerated type that can only be 'BUY' or 'SELL'
     shares INT NOT NULL,
-    -- shares = column name
--- INT = integer data type (whole numbers only)
-    price DECIMAL(10, 2) NOT NULL,
-    -- price = column name
--- DECIMAL(10, 2) = decimal data type with up to 10 digits
--- and 2 digits after the decimal point
-    transaction_date DATETIME NOT NULL,
-    -- transaction_date = column name
--- DATETIME = date and time data type
-    total_amount DECIMAL(10, 2) NOT NULL,
-    -- total_amount = column name
--- DECIMAL(10, 2) = decimal data type with up to 10 digits
--- and 2 digits after the decimal point
-    fees DECIMAL(10, 2) DEFAULT 0.00 NOT NULL,
-    -- fees = column name
+    price_per_share DECIMAL(10,2) NOT NULL,
+    transaction_date DATE NOT NULL,
+    total_amount DECIMAL(12, 2) NOT NULL,
+    fees DECIMAL(8, 2) DEFAULT 0.00,
     notes TEXT,
-    -- notes = column name
--- TEXT = variable-length text data type for longer notes
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    -- created_at = column name
--- TIMESTAMP = date and time data type that automatically sets to current time
--- when a new row is created
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-    -- updated_at = column name
--- TIMESTAMP = date and time data type that automatically updates to current time
--- whenever the row is updated
--- ON UPDATE CURRENT_TIMESTAMP = automatically updates this column when the row is modified   
-)    
+);
+
+-- Table 2: Covered Calls
+CREATE TABLE IF NOT EXISTS covered_calls (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    stock_symbol VARCHAR(10) NOT NULL,
+    underlying_shares INT NOT NULL,
+    strike_price DECIMAL(10, 2) NOT NULL,
+    premium_received DECIMAL(10, 2) NOT NULL,
+    expiration_date DATE NOT NULL,
+    contract_date DATE NOT NULL,
+    status ENUM('ACTIVE', 'EXPIRED', 'ASSIGNED', 'CLOSED') DEFAULT 'ACTIVE',
+    notes TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Table 3: Cash-Secured Puts
+CREATE TABLE IF NOT EXISTS cash_secured_puts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    stock_symbol VARCHAR(10) NOT NULL,
+    underlying_shares INT NOT NULL,
+    strike_price DECIMAL(10, 2) NOT NULL,
+    premium_received DECIMAL(10, 2) NOT NULL,
+    expiration_date DATE NOT NULL,
+    contract_date DATE NOT NULL,
+    status ENUM('ACTIVE', 'EXPIRED', 'ASSIGNED', 'CLOSED') DEFAULT 'ACTIVE',
+    notes TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+-- Table 4: Portfolio Summary
+CREATE TABLE IF NOT EXISTS portfolio_summary (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    stock_symbol UNIQUE VARCHAR(10) NOT NULL,
+    total_shares INT DEFAULT 0,
+    average_cost DECIMAL(10, 2) DEFAULT 0.00,
+    total_invested DECIMAL(12, 2) DEFAULT 0.00,
+    last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Sample Data for testing Stocks
