@@ -1,7 +1,9 @@
 //Connecting the MySQL database to the React frontend
 
-const mysql = require('mysql2');
-require('dotenv').config(); //Load .env file makes connection info available
+import mysql from 'mysql2';
+import dotenv from 'dotenv';
+import process from 'process';
+dotenv.config(); //Load .env file makes connection info available
 
 const dbConfig = {
     host: process.env.DB_HOST, //Use "process.env" object via Node.js to tell JS to look up actual value in .env
@@ -37,7 +39,18 @@ try {
 }
 }
 
-module.exports = pool; 
+async function getAllStocks() {
+    try {
+        const sql = 'SELECT * FROM stocks ORDER BY created_at DESC';
+        const [rows] = await pool.promise().execute(sql);
+        return rows;
+    } catch (error) {
+        console.error('Unable to get stocks', error);
+        throw error;
+    }
+}
+
+export { pool, addStockTransaction, getAllStocks };
 
 
 // When CSP gets assigned 

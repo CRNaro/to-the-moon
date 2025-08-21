@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS cash_secured_puts (
 -- Table 4: Portfolio Summary
 CREATE TABLE IF NOT EXISTS portfolio_summary (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    stock_symbol UNIQUE VARCHAR(10) NOT NULL,
+    stock_symbol VARCHAR(10) NOT NULL UNIQUE,
     total_shares INT DEFAULT 0,
     average_cost DECIMAL(10, 2) DEFAULT 0.00,
     total_invested DECIMAL(12, 2) DEFAULT 0.00,
