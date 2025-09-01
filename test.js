@@ -6,7 +6,8 @@ async function testAddStock() {
     try {
         console.log('Testing addStockTransaction...');
         
-        const result = await addStockTransaction('AAPL', 'Apple Inc.', 'BUY', 100, 150.00, '2025-08-20');
+        const result = await addStockTransaction('AAPL', 'Apple Inc.', 'BUY', 50, 150.00, '2025-08-20');
+        const result1 = await addStockTransaction('MSFT', 'Microsoft', 'BUY', 100, 300.00, '2025-08-20');
         
         console.log('Success! New stock transaction ID:', result);
         console.log('Check your database to see if the record was added!');

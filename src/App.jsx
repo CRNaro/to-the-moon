@@ -65,7 +65,7 @@ function App() {
                   <CardContent sx={{ textAlign: 'center', p: 3 }}>
                     <TrendingUp sx={{ fontSize: 48, color: 'primary.main', mb: 2 }} />
                     <Typography variant="h6" component="h3" gutterBottom>
-                      Stock Tracking
+                      Portfolio
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       Keep detailed records of your stock purchases and sales
@@ -103,6 +103,51 @@ function App() {
               </Grid>
             </Grid>
             
+            <Grid container spacing={3} sx={{ mb: 4 }}>
+              <Grid item xs={12} md={4}>
+                <Card sx={{ height: '100%', '&:hover': { transform: 'translateY(-4px)', transition: '0.3s' } }}>
+                  <CardContent sx={{ textAlign: 'center', p: 3 }}>
+                    <TrendingUp sx={{ fontSize: 48, color: 'primary.main', mb: 2 }} />
+                    <Typography variant="h6" component="h3" gutterBottom>
+                      Stock Tracking
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      Find and invest in new stocks
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+              
+              <Grid item xs={12} md={4}>
+                <Card sx={{ height: '100%', '&:hover': { transform: 'translateY(-4px)', transition: '0.3s' } }}>
+                  <CardContent sx={{ textAlign: 'center', p: 3 }}>
+                    <Phone sx={{ fontSize: 48, color: 'secondary.main', mb: 2 }} />
+                    <Typography variant="h6" component="h3" gutterBottom>
+                      Calendar Tracker
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      Track your profits and losses day by day through each month
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+              
+              <Grid item xs={12} md={4}>
+                <Card sx={{ height: '100%', '&:hover': { transform: 'translateY(-4px)', transition: '0.3s' } }}>
+                  <CardContent sx={{ textAlign: 'center', p: 3 }}>
+                    <AttachMoney sx={{ fontSize: 48, color: 'success.main', mb: 2 }} />
+                    <Typography variant="h6" component="h3" gutterBottom>
+                      Cash-Secured Puts
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      Monitor your CSP strategies and outcomes
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            </Grid>
+            
+
             {/* Demo Counter */}
             <Box sx={{ mt: 4 }}>
               <Button 
