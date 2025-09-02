@@ -1,7 +1,10 @@
 import { Box, Typography, Card, CardContent, Button } from '@mui/material'
 import { Phone, Add } from '@mui/icons-material'
+import { useNavigate } from 'react-router-dom'
 
 function CoveredCalls() {
+  const navigate = useNavigate()
+
   return (
     <Box sx={{ p: 3 }}>
       <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>

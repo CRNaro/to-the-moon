@@ -1,13 +1,23 @@
 import { Box, Typography, Card, CardContent, Button } from '@mui/material'
-import { TrendingUp, Add } from '@mui/icons-material'
+import { TrendingUp, Add, ArrowBack } from '@mui/icons-material'
+import { useNavigate } from 'react-router-dom'
 
-function Stocks() {
+function Portfolio() {
+  const navigate = useNavigate()
+
   return (
     <Box sx={{ p: 3 }}>
       <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
+        <Button 
+          startIcon={<ArrowBack />} 
+          onClick={() => navigate('/')}
+          sx={{ mr: 2 }}
+        >
+          Back to Home
+        </Button>
         <TrendingUp sx={{ fontSize: 40, mr: 2, color: 'primary.main' }} />
         <Typography variant="h3" component="h1">
-          Stock Tracking
+          Portfolio
         </Typography>
       </Box>
       
@@ -32,4 +42,4 @@ function Stocks() {
   )
 }
 
-export default Stocks
+export default Portfolio
