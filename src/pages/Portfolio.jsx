@@ -1,9 +1,27 @@
 import { Box, Typography, Card, CardContent, Button } from '@mui/material'
+import { useEffect, useState } from 'react'
 import { TrendingUp, Add, ArrowBack } from '@mui/icons-material'
 import { useNavigate } from 'react-router-dom'
 
 function Portfolio() {
   const navigate = useNavigate()
+  const [stocks, setStocks] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchStocks = async () => {
+    try{ 
+      const response = await fetch('http://localhost:3001/api/stocks');
+      const stockData = await response.json();
+      setStocks(stockData);
+      setLoading(false);
+    } catch (error){
+      console.error('Error fetching stocks: ', error);
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    fetchStocks();
+  }, []);
 
   return (
     <Box sx={{ p: 3 }}>
