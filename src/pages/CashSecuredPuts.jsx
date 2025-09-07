@@ -1,15 +1,25 @@
 import { Box, Typography, Card, CardContent, Button } from '@mui/material'
-import { AttachMoney, Add } from '@mui/icons-material'
+import { AttachMoney, Add, ArrowBack } from '@mui/icons-material'
+import { useNavigate } from 'react-router-dom'
 
 function CashSecuredPuts() {
+  const navigate = useNavigate()
+  
   return (
     <Box sx={{ p: 3 }}>
-      <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-        <AttachMoney sx={{ fontSize: 40, mr: 2, color: 'success.main' }} />
-        <Typography variant="h3" component="h1">
-          Cash-Secured Puts
-        </Typography>
-      </Box>
+          <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
+            <Button 
+              startIcon={<ArrowBack />} 
+              onClick={() => navigate('/')}
+              sx={{ mr: 2 }}
+            >
+              Back to Home
+            </Button>
+            <AttachMoney sx={{ fontSize: 40, mr: 2, color: 'primary.main' }} />
+            <Typography variant="h3" component="h1">
+              Cash Secured Puts
+            </Typography>
+          </Box>
       
       <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
         Monitor your CSP strategies and outcomes

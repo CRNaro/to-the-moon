@@ -7,6 +7,10 @@ import {
 import HomePage from './pages/HomePage.jsx'
 import Portfolio from './pages/Portfolio.jsx'
 import CoveredCalls from './pages/CoveredCalls.jsx'
+import CashSecuredPuts from './pages/CashSecuredPuts.jsx'
+import StockFinder from './pages/StockFinder.jsx'
+import CalendarTracker from './pages/CalendarTracker.jsx'
+import CashFlow from './pages/CashFlow.jsx'
 
 // Create a custom theme
 const theme = createTheme({
@@ -28,6 +32,10 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/coveredCalls" element={<CoveredCalls />} />
+        <Route path="/cashSecuredPuts" element={<CashSecuredPuts />} />
+        <Route path="/stockFinder" element={<StockFinder />} />
+        <Route path="/calendarTracker" element={<CalendarTracker />} />
+        <Route path="/cashFlow" element={<CashFlow/> } />
       </Routes>
     </ThemeProvider>
   )

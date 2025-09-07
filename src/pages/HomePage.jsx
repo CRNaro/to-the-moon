@@ -51,8 +51,8 @@ function HomePage() {
     navigate('/cashSecuredPuts')
   }
 
-  const handleStockTrackingClick = () => {
-    navigate('/stockTracking')
+  const handleStockFinderClick = () => {
+    navigate('/stockFinder')
   }
 
   const handleCalendarTrackerClick = () => {
@@ -131,35 +131,35 @@ function HomePage() {
             </Grid>
             
             <Grid item xs={12} md={4}>
-              <Card sx={cardStyle}>
+              <Card sx={cardStyle} onClick={handleStockFinderClick}>
                 <CardContent sx={cardContentStyle}>
                   <Assessment sx={{ fontSize: 48, color: 'primary.main', mb: 2 }} />
                   <Typography variant="h6" component="h3" gutterBottom>
-                    Stock Tracking
+                    Stock Finder
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Find and invest in new stocks 
+                    Find new stocks & information about stocks
                   </Typography>
                 </CardContent>
               </Card>
             </Grid>
             
             <Grid item xs={12} md={4}>
-              <Card sx={cardStyle}>
+              <Card sx={cardStyle} onClick={handleCalendarTrackerClick}>
                 <CardContent sx={cardContentStyle}>
                   <CalendarToday sx={{ fontSize: 48, color: 'secondary.main', mb: 2 }} />
                   <Typography variant="h6" component="h3" gutterBottom>
                     Calendar Tracker
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Track your profits and losses day by day through each month
+                    Track your profits & losses day by day through each month
                   </Typography>
                 </CardContent>
               </Card>
             </Grid>
             
             <Grid item xs={12} md={4}>
-              <Card sx={cardStyle}>
+              <Card sx={cardStyle} onClick={handleCashFlowClick}>
                 <CardContent sx={cardContentStyle}>
                   <AttachMoney sx={{ fontSize: 48, color: 'success.main', mb: 2 }} />
                   <Typography variant="h6" component="h3" gutterBottom>
